@@ -1,5 +1,5 @@
 # ==========================================
-# Python Basics Tutorial
+# Python Basics Tutorial AI
 # ==========================================
 
 # 1. Ausgabe (Output)
