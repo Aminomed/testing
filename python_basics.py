@@ -46,9 +46,25 @@ else:
 
 # 6. Schleifen (Loops)
 print("\n--- For-Schleife ---")
-# Führt Code für jedes Element in einer Liste (oder einem anderen durchlaufbaren Objekt) aus
+# Die For-Schleife geht eine Sammlung von Elementen nacheinander durch (wie eine Checkliste).
+
+# Beispiel A: Eine Liste durchgehen
+print("Beispiel A: Liste durchlaufen")
+# Nimmt sich nacheinander jede "frucht" aus der Liste "fruechte" vor.
 for frucht in fruechte:
-    print(f"Ich esse gerne {frucht}")
+    print(f"Ich lege {frucht} in den Einkaufswagen!")
+
+# Beispiel B: Etwas X-mal machen mit 'range()'
+print("\nBeispiel B: Wiederholungen mit range(3)")
+# Zählt von 0, 1, 2 (also genau 3 Mal)
+for zahl in range(3):
+    print(f"Das ist Durchlauf Nummer {zahl}")
+
+# Beispiel C: Buchstaben aus einem Text (String) durchlaufen
+print("\nBeispiel C: Buchstaben durchlaufen")
+wort = "Python"
+for buchstabe in wort:
+    print(f"Buchstabe: {buchstabe}")
 
 print("\n--- While-Schleife ---")
 # Wiederholt den Code, solange eine bestimmte Bedingung wahr (True) ist
