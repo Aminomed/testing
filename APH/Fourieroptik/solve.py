@@ -112,14 +112,14 @@ def process_notebook(file_path):
         "plt.title('Position der Minima vs Ordnung')\n",
         "plt.legend()\n",
         "plt.show()\n\n",
-        "## BITTE HIER DIE ECHTEN WERTE AUS DER VERSUCHSANLEITUNG EINTRAGEN ##\n",
-        "lambda_ = 632.8e-6 # in mm\n",
-        "L = 1000.0 # in mm\n\n",
+        "## GEMÄSS VERSUCHSAUFBAU ##\n",
+        "lambda_ = 635e-6 # in mm (635 nm)\n",
+        "L = 80.0 # in mm\n\n",
         "b = (lambda_ * L) / slope\n",
         "b_err = np.abs(b) * (slope_err / np.abs(slope))\n\n",
         "print(f\"Fit-Steigung (λL/b): {slope:.4f} ± {slope_err:.4f} mm\")\n",
         "print(f\"Berechnete Spaltbreite b: {np.abs(b):.4f} ± {b_err:.4f} mm\")\n",
-        "print(f\"(Angenommen λ={lambda_} mm, L={L} mm)\")\n"
+        "print(f\"(λ={lambda_} mm, L={L} mm)\")\n"
     ]
 
     for cell in nb['cells']:
