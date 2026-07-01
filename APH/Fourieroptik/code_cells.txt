@@ -1,0 +1,183 @@
+CELL:
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.optimize import curve_fit
+CELL:
+# Code Schnipsel
+
+# interaktiver Plot zum Ablesen von Werten (funktioniert leider nicht in jeder Umgebung)
+%matplotlib notebook
+# nutzen Sie matplotlib notebook nur wo nötig, da die interaktiven Plots viel Rechenleistung benötigen
+%matplotlib inline
+# Daten plotten in interaktivem Graph auf dem Jupyter Server (zum Ablesen der Minima bei 2.)
+#import plotly.express as px
+#fig=px.scatter(data, x='Position', y='Messwerte', title='interaktives Streudiagramm')
+#fig.update_xaxes(title_text='Position / mm')
+#fig.update_yaxes(title_text='counts')
+#fig.show()
+
+# mit matplotlib inline erzeugen Sie "normale" Plots
+
+# Plot mit Fehlerbalken. Für y_errors übergeben Sie ein Array der korrekten Größe
+# plt.errorbar(x, y, yerr=y_errors, fmt='o', label='Messwerte')
+# Beim Fit können Sie sigma=y_errors und absolute_sigma=True übergeben, um die (in absoluten Werten angegebenen) Unsicherheiten sowohl beim Fit als auch bei der berechneten Kovarianzmatrix zu berücksichtigen.
+# popt, pcov = curve_fit(fit_function, x, y, sigma=y_errors, absolute_sigma=True)
+CELL:
+# TODO: Kalibration durchführen
+data=pd.read_csv('Data/Kalibration der Abszisse.txt', sep=' ')
+display(data)
+
+# Wir fitten ein lineares Modell: x_mm = m * Pixel + c
+def lin_fit(x, m, c):
+    return m * x + c
+
+popt_cal, pcov_cal = curve_fit(lin_fit, data['Pixel'], data['Messuhr[mm]'])
+print(f"Kalibrations-Fit: x[mm] = {popt_cal[0]:.6f} * Pixel + {popt_cal[1]:.6f}")
+
+plt.figure(figsize=(8, 5))
+plt.plot(data['Pixel'], data['Messuhr[mm]'], 'o', label='Daten')
+plt.plot(data['Pixel'], lin_fit(data['Pixel'], *popt_cal), '-', label='Fit')
+plt.xlabel('Pixel')
+plt.ylabel('Messuhr [mm]')
+plt.legend()
+plt.title('Kalibration der Abszisse')
+plt.show()
+
+plt.figure(figsize=(8, 3))
+residuals_cal = data['Messuhr[mm]'] - lin_fit(data['Pixel'], *popt_cal)
+plt.plot(data['Pixel'], residuals_cal, 'o', label='Residuen')
+plt.axhline(0, color='r', linestyle='--')
+plt.xlabel('Pixel')
+plt.ylabel('Residuen [mm]')
+plt.title('Residuen der Kalibration')
+plt.legend()
+plt.show()
+
+# Funktion zur Umrechnung von Pixel in mm
+def pixel_to_mm(pixel):
+    return lin_fit(pixel, *popt_cal)
+
+CELL:
+# TODO: Beugungsbild des Einzelspalts mit theoretischer Beugungsstruktur vergleichen
+messung1 = pd.read_csv('Data/Messung1.txt', sep=' ')
+# Pixel in mm umrechnen
+messung1['x_mm'] = pixel_to_mm(messung1['pixel'])
+
+# Sinc-Funktion definieren
+# I(x) = I_0 * (sin(alpha * (x - x0)) / (alpha * (x - x0)))^2 + I_bg
+def sinc_fit(x, I_0, a, x0, I_bg):
+    # np.sinc(y) berechnet sin(pi*y)/(pi*y). Daher teilen wir das innere Argument durch pi.
+    return I_0 * (np.sinc(a * (x - x0) / np.pi))**2 + I_bg
+
+# Startwerte für den Fit schätzen
+x0_guess = messung1.loc[messung1['counts'].idxmax(), 'x_mm']
+I_0_guess = messung1['counts'].max() - messung1['counts'].min()
+I_bg_guess = messung1['counts'].min()
+a_guess = 10.0 
+
+p0 = [I_0_guess, a_guess, x0_guess, I_bg_guess]
+
+try:
+    popt_sinc, pcov_sinc = curve_fit(sinc_fit, messung1['x_mm'], messung1['counts'], p0=p0)
+    print("Fit erfolgreich!")
+    fit_erfolgreich = True
+except Exception as e:
+    print("Fit fehlgeschlagen:", e)
+    fit_erfolgreich = False
+
+plt.figure(figsize=(10, 6))
+plt.plot(messung1['x_mm'], messung1['counts'], '.', label='Messdaten', markersize=2)
+if fit_erfolgreich:
+    x_plot = np.linspace(messung1['x_mm'].min(), messung1['x_mm'].max(), 1000)
+    plt.plot(x_plot, sinc_fit(x_plot, *popt_sinc), '-', label='Theorie-Fit', linewidth=2)
+
+plt.xlabel('Position [mm]')
+plt.ylabel('Intensität [counts]')
+plt.title('Beugungsbild Einzelspalt vs Theorie')
+plt.legend()
+plt.show()
+
+if fit_erfolgreich:
+    plt.figure(figsize=(10, 3))
+    residuals_sinc = messung1['counts'] - sinc_fit(messung1['x_mm'], *popt_sinc)
+    plt.plot(messung1['x_mm'], residuals_sinc, '.', markersize=2, label='Residuen')
+    plt.axhline(0, color='r', linestyle='--')
+    plt.xlabel('Position [mm]')
+    plt.ylabel('Residuen [counts]')
+    plt.title('Residuen: Beugungsbild Einzelspalt vs Theorie')
+    plt.legend()
+    plt.show()
+
+# Kommentar:
+# Der theoretische Fit weicht eventuell von der Messung ab, z.B. wenn die Kamera
+# eine nicht-lineare Antwort hat, an einigen Stellen gesättigt ist oder wenn es
+# störendes Hintergrundrauschen gibt. Daher ist die Methode über die Minima robuster.
+
+CELL:
+# TODO: Spaltbreite bestimmen
+from scipy.signal import find_peaks
+
+# Wir übergeben -counts, um die Minima (Täler) zu finden
+# prominence steuert, wie deutlich das Minimum ausgeprägt sein muss
+peaks, _ = find_peaks(-messung1['counts'], prominence=1, distance=10)
+
+minima_x = messung1['x_mm'].iloc[peaks].values
+minima_counts = messung1['counts'].iloc[peaks].values
+x0_center = messung1.loc[messung1['counts'].idxmax(), 'x_mm']
+
+peaks_links = np.sort([x for x in minima_x if x < x0_center])[::-1][:5]
+peaks_rechts = np.sort([x for x in minima_x if x > x0_center])[:5]
+
+minima_x_clean = []
+n_clean = []
+
+for i, x in enumerate(peaks_links):
+    n_clean.append(-(i+1))
+    minima_x_clean.append(x)
+    
+for i, x in enumerate(peaks_rechts):
+    n_clean.append(i+1)
+    minima_x_clean.append(x)
+    
+n_clean = np.array(n_clean)
+minima_x_clean = np.array(minima_x_clean)
+
+plt.figure(figsize=(10, 6))
+plt.plot(messung1['x_mm'], messung1['counts'], '-', label='Messung')
+plt.plot(minima_x_clean, minima_counts, 'ro', label='Gefundene Minima')
+plt.xlabel('Position [mm]')
+plt.ylabel('Intensität [counts]')
+plt.legend()
+plt.title('Identifizierte Minima zur Spaltbreitenbestimmung')
+plt.show()
+
+# linearer Zusammenhang: x_n = (lambda * L / b) * n + x_0
+def linear_minima(n, m, x0_):
+    return m * n + x0_
+
+popt_minima, pcov_minima = curve_fit(linear_minima, n_clean, minima_x_clean)
+slope = popt_minima[0]
+slope_err = np.sqrt(np.diag(pcov_minima))[0]
+
+plt.figure(figsize=(8, 5))
+plt.errorbar(n_clean, minima_x_clean, yerr=0.05, fmt='bo', label='Minima Positionen')
+n_plot = np.linspace(n_clean.min(), n_clean.max(), 100)
+plt.plot(n_plot, linear_minima(n_plot, *popt_minima), 'r-', label='Fit')
+plt.xlabel('Ordnung n')
+plt.ylabel('Position x_n [mm]')
+plt.title('Position der Minima vs Ordnung')
+plt.legend()
+plt.show()
+
+## GEMÄSS VERSUCHSAUFBAU ##
+lambda_ = 635e-6 # in mm (635 nm)
+L = 80.0 # in mm
+
+b = (lambda_ * L) / slope
+b_err = np.abs(b) * (slope_err / np.abs(slope))
+
+print(f"Fit-Steigung (λL/b): {slope:.4f} ± {slope_err:.4f} mm")
+print(f"Berechnete Spaltbreite b: {np.abs(b):.4f} ± {b_err:.4f} mm")
+print(f"(λ={lambda_} mm, L={L} mm)")
+
