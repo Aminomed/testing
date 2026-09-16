@@ -269,7 +269,7 @@ function submitRezept(e) {
         "Einwilligung DSGVO": "Ja (erteilt)"
     };
 
-    fetch('https://formsubmit.co/ajax/praxisdr.rahemi-pour@hotmail.de', {
+    fetch('mailer.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -321,7 +321,7 @@ function submitAbsage(e) {
         "Einwilligung DSGVO": "Ja (erteilt)"
     };
 
-    fetch('https://formsubmit.co/ajax/praxisdr.rahemi-pour@hotmail.de', {
+    fetch('mailer.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -761,17 +761,17 @@ const translations = {
 
         // Rezeptbestellung
         rezept_title: "Rezeptbestellung",
-        rezept_desc: "Nur für bestehende Patienten. Bitte füllen Sie das Formular vollständig aus.",
+        rezept_desc: "Für bestehende Patienten, deren Versichertenkarte im aktuellen Quartal bereits eingelesen wurde.",
         rezept_label_vorname: "Vorname",
         rezept_label_nachname: "Nachname",
         rezept_label_geburt: "Geburtsdatum",
         rezept_label_telefon: "Telefonnummer",
         rezept_label_medikament: "Gewünschte(s) Medikament(e)",
         rezept_label_anmerkung: "Anmerkungen (optional)",
-        rezept_consent: "Ich willige ein, dass meine Angaben (einschließlich sensibler Gesundheitsdaten) zur Bearbeitung der Rezeptanforderung verarbeitet werden. Weitere Hinweise in der <a href=\"#datenschutz\" onclick=\"showDatenschutz(event)\">Datenschutzerklärung</a>.*",
+        rezept_consent: "Dieses Formular muss 2 Tage vor der Abholung des Rezeptes an uns übermittelt werden. Dabei sollen alle Angaben so genau wie möglich ausgefüllt werden. Bringen Sie zur Abholung Ihre Versichertenkarte mit. Mit dem Absenden dieses Formulars erklären Sie sich damit einverstanden, dass Sie alle Daten richtig ausgefüllt haben, wir Ihr Rezept vorbereiten und Sie es in 2 Tagen vor Ort abholen können. (<a href=\"#datenschutz\" onclick=\"showDatenschutz(event)\">Datenschutzerklärung</a>)*",
         rezept_btn_submit: "Rezept anfordern",
-        rezept_success_title: "Anfrage gesendet!",
-        rezept_success_desc: "Wir melden uns schnellstmöglich bei Ihnen.",
+        rezept_success_title: "Rezeptanfrage übermittelt",
+        rezept_success_desc: "Ihr Rezept liegt in 2 Werktagen zur Abholung in unserer Praxis bereit. Bitte denken Sie an Ihre Versichertenkarte.",
 
         // Terminabsage
         absage_title: "Terminabsage",
@@ -860,17 +860,17 @@ const translations = {
 
         // Rezeptbestellung
         rezept_title: "Repeat Prescription",
-        rezept_desc: "For existing patients only. Please complete the form below.",
+        rezept_desc: "For existing patients who have already presented their insurance card in the current quarter.",
         rezept_label_vorname: "First Name",
         rezept_label_nachname: "Last Name",
         rezept_label_geburt: "Date of Birth",
         rezept_label_telefon: "Phone Number",
         rezept_label_medikament: "Requested Medication(s)",
         rezept_label_anmerkung: "Notes (optional)",
-        rezept_consent: "I consent to the processing of my medical request details in accordance with the <a href=\"#datenschutz\" onclick=\"showDatenschutz(event)\">Privacy Policy</a>.*",
+        rezept_consent: "This form must be submitted 2 days prior to picking up your prescription. Please fill out all details as accurately as possible. Please bring your insurance card when picking up. By submitting, you confirm that all details are correct and agree that your prescription will be ready for pick-up in 2 days. (<a href=\"#datenschutz\" onclick=\"showDatenschutz(event)\">Privacy Policy</a>)*",
         rezept_btn_submit: "Request Prescription",
-        rezept_success_title: "Request Sent!",
-        rezept_success_desc: "We will process your prescription as soon as possible.",
+        rezept_success_title: "Prescription Request Submitted",
+        rezept_success_desc: "Your prescription will be ready for pick-up at our practice in 2 working days. Please remember to bring your insurance card.",
 
         // Terminabsage
         absage_title: "Cancel Appointment",
@@ -919,7 +919,12 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('praxis_lang') || 'de';
+  let currentLang = 'de';
+  try {
+      currentLang = localStorage.getItem('praxis_lang') || 'de';
+  } catch (e) {
+      console.warn("localStorage not available, defaulting to 'de'");
+  }
 
 function setLanguage(lang) {
     if (!translations[lang]) return;

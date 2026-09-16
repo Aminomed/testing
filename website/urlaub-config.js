@@ -19,7 +19,7 @@ const urlaubConfig = {
     status: 'auto', // Zum ersten Testen auf 'an' gesetzt, damit Sie das Ergebnis sofort sehen
 
     // Urlaubszeitraum (Format: JJJJ-MM-TT)
-    von: "2026-09-17",
+    von: "2026-09-25",
     bis: "2026-09-30",
 
     // Wann die Praxis wieder regulär erreichbar ist
