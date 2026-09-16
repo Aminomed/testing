@@ -5,27 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. med. Rahemi Pour — Hautarztpraxis Erlangen</title>
     <meta name="description" content="Hautarztpraxis Dr. med. Rahemi Pour in Erlangen. Dermatologie, Allergologie, Ambulante Operationen, Ästhetische Medizin. Online Terminbuchung und Rezeptbestellung.">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="196x196" href="favicon-196x196.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+    <meta property="og:title" content="Dr. med. Rahemi Pour — Hautarztpraxis Erlangen">
+    <meta property="og:description" content="Facharzt für Dermatologie, Allergologie, Ambulante Operationen & Ästhetische Medizin am Schlossplatz Erlangen.">
+    <meta property="og:image" content="praxis-logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "Hautarztpraxis Dr. med. Shahab Rahemi Pour",
+      "image": "praxis-logo.png",
+      "telephone": "+49913124424",
+      "faxNumber": "+499131898883",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Schlossplatz 1",
+        "addressLocality": "Erlangen",
+        "postalCode": "91054",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.5976,
+        "longitude": 11.0044
+      },
+      "medicalSpecialty": "Dermatology",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "12:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Thursday"],
+          "opens": "14:30",
+          "closes": "17:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Wednesday", "Friday"],
+          "opens": "08:00",
+          "closes": "12:00"
+        }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
+    <!-- Announcement Banner (Praxisurlaub & Vertretung) -->
+    <aside class="urlaub-banner" id="urlaubBanner" aria-label="Urlaubshinweis" style="display: none;">
+        <div class="urlaub-banner-inner">
+            <span class="urlaub-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Praxisurlaub
+            </span>
+            <span class="urlaub-banner-text" id="urlaubBannerText">Praxisurlaub vom 15.09. bis 30.09.2026</span>
+            <button type="button" class="urlaub-banner-btn" onclick="openUrlaubModal()">
+                <span>Vertretungspraxen & Notdienst</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+    </aside>
+
     <!-- Navigation -->
-    <nav class="nav" id="nav">
+    <nav class="nav nav-dark" id="nav">
         <div class="nav-inner">
             <a href="#hero" class="nav-logo">
+                <img src="praxis-logo.png" alt="Logo Hautarztpraxis Dr. Rahemi Pour" class="nav-logo-img">
                 <span class="logo-text">Dr. Rahemi Pour</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="#schnellauswahl" class="nav-link">Schnellzugriff</a>
-                <a href="#leistungen" class="nav-link">Leistungen</a>
-                <a href="#arzt" class="nav-link">Über mich</a>
-                <a href="#besondere" class="nav-link">Spezialbehandlungen</a>
-                <a href="#anfahrt" class="nav-link">Anfahrt</a>
-                <a href="#kontakt" class="nav-link">Kontakt</a>
+                <a href="#schnellauswahl" class="nav-link" data-i18n="nav_quick">Schnellzugriff</a>
+                <a href="#rezept" class="nav-link" data-i18n="nav_online">Rezept &amp; Absage</a>
+                <a href="#leistungen" class="nav-link" data-i18n="nav_services">Leistungen</a>
+                <a href="#besondere" class="nav-link" data-i18n="nav_special">Spezialbehandlungen</a>
+                <a href="#arzt" class="nav-link" data-i18n="nav_doctor">Über mich</a>
+                <a href="#anfahrt" class="nav-link" data-i18n="nav_anfahrt">Anfahrt</a>
+                <a href="#kontakt" class="nav-link" data-i18n="nav_contact">Kontakt</a>
             </div>
-            <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="nav-cta">Termin buchen</a>
+            <div class="nav-actions">
+                <div class="lang-switch" id="langSwitch" aria-label="Sprachauswahl / Language">
+                    <button type="button" class="lang-btn active" data-lang="de" onclick="setLanguage('de')">DE</button>
+                    <span class="lang-sep">|</span>
+                    <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
+                <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="nav-cta" data-i18n="btn_book_short">Termin buchen</a>
+            </div>
             <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
                 <span></span><span></span><span></span>
             </button>
@@ -35,37 +114,45 @@
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-inner">
-            <a href="#schnellauswahl" class="mobile-link">Schnellzugriff</a>
-            <a href="#leistungen" class="mobile-link">Leistungen</a>
-            <a href="#arzt" class="mobile-link">Über mich</a>
-            <a href="#besondere" class="mobile-link">Spezialbehandlungen</a>
-            <a href="#anfahrt" class="mobile-link">Anfahrt</a>
-            <a href="#kontakt" class="mobile-link">Kontakt</a>
-            <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="mobile-cta">Termin buchen</a>
+            <div class="mobile-lang-switch">
+                <button type="button" class="mobile-lang-btn active" data-lang="de" onclick="setLanguage('de')">DE (Deutsch)</button>
+                <button type="button" class="mobile-lang-btn" data-lang="en" onclick="setLanguage('en')">EN (English)</button>
+            </div>
+            <a href="#schnellauswahl" class="mobile-link" data-i18n="nav_quick">Schnellzugriff</a>
+            <a href="#rezept" class="mobile-link" data-i18n="nav_online">Rezept &amp; Absage</a>
+            <a href="#leistungen" class="mobile-link" data-i18n="nav_services">Leistungen</a>
+            <a href="#besondere" class="mobile-link" data-i18n="nav_special">Spezialbehandlungen</a>
+            <a href="#arzt" class="mobile-link" data-i18n="nav_doctor">Über mich</a>
+            <a href="#anfahrt" class="mobile-link" data-i18n="nav_anfahrt">Anfahrt</a>
+            <a href="#kontakt" class="mobile-link" data-i18n="nav_contact">Kontakt</a>
+            <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="mobile-cta" data-i18n="btn_book">Termin buchen</a>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="hero-clinic.png" alt="Moderne Hautarztpraxis" class="hero-img">
+            <picture>
+                <source srcset="praxis-empfang-front.webp" type="image/webp">
+                <img src="praxis-empfang-front.jpg" alt="Hautarztpraxis Dr. med. Rahemi Pour Erlangen – Moderner Empfangsbereich" class="hero-img">
+            </picture>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <p class="hero-eyebrow animate-on-scroll">Hautarztpraxis Erlangen</p>
+            <p class="hero-eyebrow animate-on-scroll" data-i18n="hero_eyebrow">Hautarztpraxis Erlangen</p>
             <h1 class="hero-title animate-on-scroll">
                 Dr. med.<br>Rahemi Pour
             </h1>
-            <p class="hero-subtitle animate-on-scroll">
+            <p class="hero-subtitle animate-on-scroll" data-i18n="hero_subtitle">
                 Facharzt für Dermatologie · Allergologie · Ambulante Operationen · Dermatohistologie
             </p>
             <div class="hero-actions animate-on-scroll">
                 <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="btn btn-primary btn-lg">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Termin vereinbaren
+                    <span data-i18n="hero_btn_book">Termin vereinbaren</span>
                 </a>
                 <a href="#schnellauswahl" class="btn btn-glass btn-lg">
-                    Mehr erfahren
+                    <span data-i18n="hero_btn_more">Mehr erfahren</span>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </a>
             </div>
@@ -79,27 +166,32 @@
     <section class="section section-dark" id="schnellauswahl">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <p class="section-eyebrow">Schnellzugriff</p>
-                <h2 class="section-title">Alles, was Sie brauchen.<br><span class="text-gradient">Direkt erreichbar.</span></h2>
-                <p class="section-desc">Die wichtigsten Funktionen für unsere Patienten – schnell und unkompliziert.</p>
+                <div class="insurance-pill">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    <span data-i18n="insurance_pill">Alle gesetzlichen Kassen (GKV) &amp; Privatversicherte (PKV)</span>
+                </div>
+                <p class="section-eyebrow" data-i18n="quick_eyebrow">SCHNELLZUGRIFF</p>
+                <h2 class="section-title" data-i18n="quick_title">ALLES, WAS SIE BRAUCHEN</h2>
+                <p class="section-desc" data-i18n="quick_desc">Die wichtigsten Funktionen für unsere Patienten – schnell und unkompliziert.</p>
             </div>
             <div class="quick-cards">
                 <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="quick-card animate-on-scroll" id="card-termin">
                     <div class="quick-card-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
                     </div>
-                    <h3 class="quick-card-title">Termin vereinbaren</h3>
-                    <p class="quick-card-desc">Online Terminbuchung über Doctolib – einfach, schnell und jederzeit verfügbar.</p>
+                    <h3 class="quick-card-title" data-i18n="quick_card_termin_title">Termin vereinbaren</h3>
+                    <p class="quick-card-desc" data-i18n="quick_card_termin_desc">Online Terminbuchung über Doctolib – einfach, schnell und jederzeit verfügbar.</p>
                     <span class="quick-card-arrow">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </span>
                 </a>
                 <a href="#rezept" class="quick-card animate-on-scroll" id="card-rezept">
+                    <span class="card-urlaub-badge" id="rezeptCardBadge" data-i18n="card_urlaub_badge">Urlaubspause</span>
                     <div class="quick-card-icon icon-green">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     </div>
-                    <h3 class="quick-card-title">Rezept bestellen</h3>
-                    <p class="quick-card-desc">Folgerezepte bequem online bestellen – nur für bestehende Patienten.</p>
+                    <h3 class="quick-card-title" data-i18n="quick_card_rezept_title">Rezept bestellen</h3>
+                    <p class="quick-card-desc" data-i18n="quick_card_rezept_desc">Folgerezepte bequem online bestellen – nur für bestehende Patienten.</p>
                     <span class="quick-card-arrow">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </span>
@@ -108,8 +200,8 @@
                     <div class="quick-card-icon icon-orange">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                     </div>
-                    <h3 class="quick-card-title">Termin absagen</h3>
-                    <p class="quick-card-desc">Können Sie Ihren Termin nicht wahrnehmen? Sagen Sie einfach online ab.</p>
+                    <h3 class="quick-card-title" data-i18n="quick_card_absage_title">Termin absagen</h3>
+                    <p class="quick-card-desc" data-i18n="quick_card_absage_desc">Können Sie Ihren Termin nicht wahrnehmen? Sagen Sie einfach online ab.</p>
                     <span class="quick-card-arrow">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                     </span>
@@ -126,30 +218,188 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div class="hours-content">
-                    <h3>Unsere Öffnungszeiten</h3>
+                    <div class="hours-header-row">
+                        <h3 data-i18n="hours_title">Unsere Öffnungszeiten</h3>
+                        <div class="hours-live-status" id="hoursLiveStatus">
+                            <span class="status-dot"></span>
+                            <span class="status-text" id="hoursLiveStatusText">Wird geprüft...</span>
+                        </div>
+                    </div>
                     <div class="hours-grid">
                         <div class="hours-item">
-                            <span class="hours-day">Montag</span>
+                            <span class="hours-day" data-i18n="day_mon">Montag</span>
                             <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
                         </div>
                         <div class="hours-item">
-                            <span class="hours-day">Dienstag</span>
+                            <span class="hours-day" data-i18n="day_tue">Dienstag</span>
                             <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
                         </div>
                         <div class="hours-item">
-                            <span class="hours-day">Mittwoch</span>
+                            <span class="hours-day" data-i18n="day_wed">Mittwoch</span>
                             <span class="hours-time">08:00 – 12:00</span>
                         </div>
                         <div class="hours-item">
-                            <span class="hours-day">Donnerstag</span>
+                            <span class="hours-day" data-i18n="day_thu">Donnerstag</span>
                             <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
                         </div>
                         <div class="hours-item">
-                            <span class="hours-day">Freitag</span>
+                            <span class="hours-day" data-i18n="day_fri">Freitag</span>
                             <span class="hours-time">08:00 – 12:00</span>
                         </div>
                     </div>
-                    <p class="hours-note">Termine nach Vereinbarung · Notfälle jederzeit</p>
+                    <p class="hours-note" data-i18n="hours_note">Termine nach Vereinbarung · Notfälle jederzeit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rezeptbestellung Section -->
+    <section class="section section-dark" id="rezept">
+        <div class="container container-sm">
+            <div class="form-section animate-on-scroll">
+                <div class="form-header">
+                    <div class="form-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h2 class="section-title" data-i18n="rezept_title">Rezeptbestellung</h2>
+                    <p class="section-desc" id="rezeptSectionDesc" data-i18n="rezept_desc">Nur für bestehende Patienten. Bitte füllen Sie das Formular vollständig aus.</p>
+                </div>
+
+                <!-- Urlaubs-Sperrhinweis (aktiv wenn Praxisurlaub aktiv ist) -->
+                <div class="rezept-urlaub-notice" id="rezeptUrlaubNotice" style="display: none;">
+                    <div class="rezept-urlaub-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3 class="rezept-urlaub-title">Rezeptbestellung während des Praxisurlaubs pausiert</h3>
+                    <p class="rezept-urlaub-text" id="rezeptUrlaubDesc">
+                        Während unseres Urlaubs können leider keine Rezepte entgegengenommen oder bearbeitet werden.
+                    </p>
+                    <div class="rezept-urlaub-info-pill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span>Wieder möglich ab: <strong id="rezeptUrlaubReturn">Donnerstag, 01. Oktober 2026</strong></span>
+                    </div>
+                    <div class="rezept-urlaub-actions">
+                        <button type="button" class="btn btn-primary" onclick="openUrlaubModal()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+                            Vertretungspraxen & Notdienst anzeigen
+                        </button>
+                    </div>
+                </div>
+
+                <form class="modern-form" id="rezeptForm" onsubmit="submitRezept(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rezeptVorname" data-i18n="rezept_label_vorname">Vorname</label>
+                            <input type="text" id="rezeptVorname" name="vorname" placeholder="Ihr Vorname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rezeptNachname" data-i18n="rezept_label_nachname">Nachname</label>
+                            <input type="text" id="rezeptNachname" name="nachname" placeholder="Ihr Nachname" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rezeptGeburt" data-i18n="rezept_label_geburt">Geburtsdatum</label>
+                            <input type="date" id="rezeptGeburt" name="geburtsdatum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rezeptTelefon" data-i18n="rezept_label_telefon">Telefonnummer</label>
+                            <input type="tel" id="rezeptTelefon" name="telefon" placeholder="+49 ..." required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rezeptMedikament" data-i18n="rezept_label_medikament">Gewünschte(s) Medikament(e)</label>
+                        <textarea id="rezeptMedikament" name="medikamente" rows="3" placeholder="Bitte geben Sie die gewünschten Medikamente an…" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="rezeptAnmerkung" data-i18n="rezept_label_anmerkung">Anmerkungen (optional)</label>
+                        <textarea id="rezeptAnmerkung" name="anmerkungen" rows="2" placeholder="Weitere Hinweise…"></textarea>
+                    </div>
+                    <div class="form-group form-checkbox-group">
+                        <label class="checkbox-label" for="rezeptDatenschutz">
+                            <input type="checkbox" id="rezeptDatenschutz" required>
+                            <span class="checkbox-text" data-i18n="rezept_consent">
+                                Ich willige ein, dass meine Angaben (einschließlich sensibler Gesundheitsdaten) zur Bearbeitung der Rezeptanforderung verarbeitet werden. Weitere Hinweise in der <a href="#datenschutz" onclick="showDatenschutz(event)">Datenschutzerklärung</a>.*
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="rezept_btn_submit">Rezept anfordern</span>
+                    </button>
+                </form>
+                <div class="form-success" id="rezeptSuccess">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <h3 data-i18n="rezept_success_title">Anfrage gesendet!</h3>
+                    <p data-i18n="rezept_success_desc">Wir melden uns schnellstmöglich bei Ihnen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminabsage Section -->
+    <section class="section" id="terminabsage">
+        <div class="container container-sm">
+            <div class="form-section animate-on-scroll">
+                <div class="form-header">
+                    <div class="form-icon icon-orange">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </div>
+                    <h2 class="section-title" data-i18n="absage_title">Terminabsage</h2>
+                    <p class="section-desc" data-i18n="absage_desc">Sie können Ihren Termin nicht wahrnehmen? Bitte sagen Sie rechtzeitig ab.</p>
+                </div>
+
+                <div class="absage-doctolib-hint">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span data-i18n="absage_doctolib_hint">Über Doctolib gebucht? Sie können Termine auch direkt mit 1 Klick in Ihrem <a href="https://www.doctolib.de" target="_blank" rel="noopener">Doctolib-Konto</a> stornieren.</span>
+                </div>
+
+                <form class="modern-form" id="absageForm" onsubmit="submitAbsage(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="absageVorname" data-i18n="label_vorname">Vorname</label>
+                            <input type="text" id="absageVorname" name="vorname" placeholder="Ihr Vorname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="absageNachname" data-i18n="label_nachname">Nachname</label>
+                            <input type="text" id="absageNachname" name="nachname" placeholder="Ihr Nachname" required>
+                        </div>
+                    </div>
+                    <div class="form-row form-row-3">
+                        <div class="form-group">
+                            <label for="absageGeburt" data-i18n="label_geburt">Geburtsdatum</label>
+                            <input type="date" id="absageGeburt" name="geburtsdatum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="absageTermin" data-i18n="label_termin">Termin (Datum)</label>
+                            <input type="date" id="absageTermin" name="termindatum" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="absageUhrzeit" data-i18n="label_uhrzeit">Uhrzeit des Termins</label>
+                            <input type="time" id="absageUhrzeit" name="uhrzeit" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="absageGrund" data-i18n="label_grund">Grund der Absage (optional)</label>
+                        <textarea id="absageGrund" name="grund" rows="2" placeholder="Bitte nennen Sie uns den Grund…"></textarea>
+                    </div>
+                    <div class="form-group form-checkbox-group">
+                        <label class="checkbox-label" for="absageDatenschutz">
+                            <input type="checkbox" id="absageDatenschutz" required>
+                            <span class="checkbox-text" data-i18n="absage_consent">
+                                Ich willige in die Verarbeitung meiner Daten zur Terminabsage gemäß der <a href="#datenschutz" onclick="showDatenschutz(event)">Datenschutzerklärung</a> ein.*
+                            </span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full btn-orange">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span data-i18n="btn_submit_absage">Termin absagen</span>
+                    </button>
+                </form>
+                <div class="form-success" id="absageSuccess">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <h3 data-i18n="absage_success_title">Absage gesendet!</h3>
+                    <p data-i18n="absage_success_desc">Vielen Dank, wir haben Ihre Absage erhalten.</p>
                 </div>
             </div>
         </div>
@@ -159,168 +409,71 @@
     <section class="section" id="leistungen">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <p class="section-eyebrow">Unsere Leistungen</p>
-                <h2 class="section-title">Umfassende Dermatologie.<br><span class="text-gradient">Für Ihre Gesundheit.</span></h2>
-                <p class="section-desc">Modernste Diagnostik und Therapie in allen Bereichen der Haut- und Geschlechtskrankheiten.</p>
+                <p class="section-eyebrow" data-i18n="services_eyebrow">Unsere Leistungen</p>
+                <h2 class="section-title" data-i18n="services_title">Umfassende Dermatologie.<br><span class="text-gradient">Für Ihre Gesundheit.</span></h2>
+                <p class="section-desc" data-i18n="services_desc">Modernste Diagnostik und Therapie in allen Bereichen der Haut- und Geschlechtskrankheiten.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card animate-on-scroll" id="service-dermatologie">
-                    <div class="service-number">01</div>
+
+            <!-- Apple-Style Filter Tabs -->
+            <div class="service-tabs animate-on-scroll" role="tablist">
+                <button type="button" class="service-tab active" data-filter="all" role="tab" aria-selected="true" data-i18n="tab_all">Alle Leistungen</button>
+                <button type="button" class="service-tab" data-filter="klassisch" role="tab" aria-selected="false" data-i18n="tab_klassisch">Dermatologie &amp; Vorsorge</button>
+                <button type="button" class="service-tab" data-filter="op" role="tab" aria-selected="false" data-i18n="tab_op">Operationen &amp; Venen</button>
+                <button type="button" class="service-tab" data-filter="spezial" role="tab" aria-selected="false" data-i18n="tab_spezial">Ästhetik &amp; Spezialgebiete</button>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <div class="service-card animate-on-scroll" id="service-dermatologie" data-category="klassisch">
                     <h3 class="service-title">Dermatologie</h3>
                     <p class="service-desc">Aktinische Keratosen, Maligne Tumore, Haarausfall, Neurodermitis, Schuppenflechte, Akne, Juckreiz, Arzneimittelreaktionen u.v.m.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-allergologie">
-                    <div class="service-number">02</div>
+                <div class="service-card animate-on-scroll" id="service-allergologie" data-category="klassisch">
                     <h3 class="service-title">Allergologie</h3>
                     <p class="service-desc">Pollen-, Nahrungsmittel-, Medikamenten-, Insektengift-Allergien. Umfassende Diagnostik und Therapie.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-unvertraeglichkeit">
-                    <div class="service-number">03</div>
+                <div class="service-card animate-on-scroll" id="service-unvertraeglichkeit" data-category="klassisch">
                     <h3 class="service-title">Unverträglichkeiten</h3>
                     <p class="service-desc">Unverträglichkeitsreaktionen und Histaminose – präzise Diagnostik und individuelle Behandlung.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-ekzem">
-                    <div class="service-number">04</div>
+                <div class="service-card animate-on-scroll" id="service-ekzem" data-category="klassisch">
                     <h3 class="service-title">Ekzem & Epikutantestung</h3>
                     <p class="service-desc">Professionelle Kontaktallergie-Diagnostik mit Epikutantestung und individueller Beratung.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-operationen">
-                    <div class="service-number">05</div>
+                <div class="service-card animate-on-scroll" id="service-operationen" data-category="op">
                     <h3 class="service-title">Ambulante Operationen</h3>
                     <p class="service-desc">Schonende chirurgische Eingriffe in unserer modern ausgestatteten Praxis.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-proktologie">
-                    <div class="service-number">06</div>
+                <div class="service-card animate-on-scroll" id="service-proktologie" data-category="op">
                     <h3 class="service-title">Proktologie</h3>
                     <p class="service-desc">Diskrete und einfühlsame Behandlung proktologischer Erkrankungen.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-venerologie">
-                    <div class="service-number">07</div>
+                <div class="service-card animate-on-scroll" id="service-venerologie" data-category="spezial">
                     <h3 class="service-title">Venerologie</h3>
                     <p class="service-desc">Diagnostik und Therapie sexuell übertragbarer Erkrankungen.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-phlebologie">
-                    <div class="service-number">08</div>
+                <div class="service-card animate-on-scroll" id="service-phlebologie" data-category="op">
                     <h3 class="service-title">Phlebologie</h3>
                     <p class="service-desc">Umfassende Behandlung von Venenerkrankungen.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-aesthetik">
-                    <div class="service-number">09</div>
+                <div class="service-card animate-on-scroll" id="service-aesthetik" data-category="spezial">
                     <h3 class="service-title">Ästhetische Medizin</h3>
                     <p class="service-desc">Laser, Filler, Botox, Peeling, Dermarolling, PRP-Therapie – für ein jugendliches Erscheinungsbild.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-berufs">
-                    <div class="service-number">10</div>
+                <div class="service-card animate-on-scroll" id="service-berufs" data-category="spezial">
                     <h3 class="service-title">Berufsdermatologie</h3>
                     <p class="service-desc">Erkennung und Behandlung beruflich bedingter Hauterkrankungen.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-histopath">
-                    <div class="service-number">11</div>
+                <div class="service-card animate-on-scroll" id="service-histopath" data-category="spezial">
                     <h3 class="service-title">Dermatohistopathologie</h3>
                     <p class="service-desc">Feingewebliche Untersuchung der Haut für präzise Diagnosen.</p>
                 </div>
-                <div class="service-card animate-on-scroll" id="service-geno">
-                    <div class="service-number">12</div>
+                <div class="service-card animate-on-scroll" id="service-geno" data-category="spezial">
                     <h3 class="service-title">Genodermatologie</h3>
                     <p class="service-desc">Diagnostik und Beratung bei erblich bedingten Hauterkrankungen.</p>
                 </div>
-                <div class="service-card service-card-highlight animate-on-scroll" id="service-vorsorge">
-                    <div class="service-number">13</div>
+                <div class="service-card service-card-highlight animate-on-scroll" id="service-vorsorge" data-category="klassisch">
                     <h3 class="service-title">Vorsorge & Nachsorge</h3>
                     <p class="service-desc">Hautkrebsscreening und umfassende Vorsorge- und Nachsorge-Untersuchungen für Ihre Sicherheit.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Doctor Section -->
-    <section class="section section-dark" id="arzt">
-        <div class="container">
-            <div class="doctor-layout">
-                <div class="doctor-image-col animate-on-scroll">
-                    <div class="doctor-image-wrapper">
-                        <img src="doctor-portrait.png" alt="Dr. med. Rahemi Pour" class="doctor-img">
-                        <div class="doctor-image-blur"></div>
-                    </div>
-                </div>
-                <div class="doctor-content-col animate-on-scroll">
-                    <p class="section-eyebrow">Ihr Hautarzt</p>
-                    <h2 class="section-title">Dr. med.<br><span class="text-gradient">Rahemi Pour</span></h2>
-                    <p class="doctor-intro">Umfangreiche Ausbildung und jahrelange Erfahrung in der Dermatologie an renommierten Universitäten in Deutschland und den USA.</p>
-                    
-                    <div class="doctor-timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Medizinstudium</h4>
-                                <p>Ludwig-Maximilians-Universität München, Fach Dermatologie bei Prof. Braun-Falco</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Dissertation – Magna cum laude</h4>
-                                <p>Thymusblutungen und deren Entstehungsbedingungen beim plötzlichen Säuglingstod bei Prof. Wilske</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Facharztausbildung Dermatologie</h4>
-                                <p>Otto-von-Guericke Universität Magdeburg bei Prof. Kühne und Prof. Gollnick</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Genodermatologie</h4>
-                                <p>Philipps-Universität Marburg bei Prof. Happle</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Allergologie</h4>
-                                <p>Technische Universität München bei Prof. Ring</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Dermatohistopathologie</h4>
-                                <p>Institute for Dermatopathology, Jefferson Medical College, USA, bei Prof. Bernard Ackerman</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Proktologie & Venerologie</h4>
-                                <p>Chirurgische Universitätsklinik Dresden · Gesundheitsamt Frankfurt · Universitätsklinik Frankfurt</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-glass" id="toggleMemberships" onclick="toggleMemberships()">
-                        Mitgliedschaften anzeigen
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-
-                    <div class="memberships-list" id="membershipsList">
-                        <h4 class="memberships-title">Mitgliedschaften & Fachgesellschaften</h4>
-                        <ul class="memberships">
-                            <li>European Academy of Dermatology and Venerology (EADV)</li>
-                            <li>Arbeitsgemeinschaft Dermatologische Onkologie (ADO)</li>
-                            <li>Deutsche Dermatologische Gesellschaft</li>
-                            <li>European Academy of Allergy and Clinical Immunology (EAACI)</li>
-                            <li>Arbeitsgemeinschaft Dermatologische Histologie</li>
-                            <li>Internationales Darmstädter Live-Symposium</li>
-                            <li>Deutsche Allergie-Kongress (DAK)</li>
-                            <li>International Society of Dermatopathology</li>
-                            <li>Drug Hypersensitivity Meeting (DHM)</li>
-                            <li>Deutsche Gesellschaft für Dermatochirurgie</li>
-                            <li>Deutsche STI-Gesellschaft</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -330,8 +483,8 @@
     <section class="section" id="besondere">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <p class="section-eyebrow">Spezialgebiete</p>
-                <h2 class="section-title">Besondere Behandlungen.<br><span class="text-gradient">Höchste Expertise.</span></h2>
+                <p class="section-eyebrow" data-i18n="special_eyebrow">Spezialgebiete</p>
+                <h2 class="section-title" data-i18n="special_title">Besondere Behandlungen.<br><span class="text-gradient">Höchste Expertise.</span></h2>
             </div>
 
             <div class="special-treatments">
@@ -426,105 +579,92 @@
         </div>
     </section>
 
-    <!-- Rezeptbestellung Section -->
-    <section class="section section-dark" id="rezept">
-        <div class="container container-sm">
-            <div class="form-section animate-on-scroll">
-                <div class="form-header">
-                    <div class="form-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <!-- Doctor Section -->
+    <section class="section section-dark" id="arzt">
+        <div class="container">
+            <div class="doctor-layout doctor-layout-centered">
+                <div class="doctor-content-col animate-on-scroll">
+                    <div class="doctor-header-centered">
+                        <p class="section-eyebrow" data-i18n="doctor_eyebrow">Ihr Hautarzt</p>
+                        <h2 class="section-title">Dr. med.<br><span class="text-gradient">Rahemi Pour</span></h2>
+                        <p class="doctor-intro">Umfangreiche Ausbildung und jahrelange Erfahrung in der Dermatologie an renommierten Universitäten in Deutschland und den USA.</p>
                     </div>
-                    <h2 class="section-title">Rezeptbestellung</h2>
-                    <p class="section-desc">Nur für bestehende Patienten. Bitte füllen Sie das Formular vollständig aus.</p>
-                </div>
-                <form class="modern-form" id="rezeptForm" onsubmit="submitRezept(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rezeptVorname">Vorname</label>
-                            <input type="text" id="rezeptVorname" placeholder="Ihr Vorname" required>
+                    
+                    <div class="doctor-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Medizinstudium</h4>
+                                <p>Ludwig-Maximilians-Universität München, Fach Dermatologie bei Prof. Braun-Falco</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="rezeptNachname">Nachname</label>
-                            <input type="text" id="rezeptNachname" placeholder="Ihr Nachname" required>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Dissertation – Magna cum laude</h4>
+                                <p>Thymusblutungen und deren Entstehungsbedingungen beim plötzlichen Säuglingstod bei Prof. Wilske</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Facharztausbildung Dermatologie</h4>
+                                <p>Otto-von-Guericke Universität Magdeburg bei Prof. Kühne und Prof. Gollnick</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Genodermatologie</h4>
+                                <p>Philipps-Universität Marburg bei Prof. Happle</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Allergologie</h4>
+                                <p>Technische Universität München bei Prof. Ring</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Dermatohistopathologie</h4>
+                                <p>Institute for Dermatopathology, Jefferson Medical College, USA, bei Prof. Bernard Ackerman</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Proktologie & Venerologie</h4>
+                                <p>Chirurgische Universitätsklinik Dresden · Gesundheitsamt Frankfurt · Universitätsklinik Frankfurt</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="rezeptGeburt">Geburtsdatum</label>
-                            <input type="date" id="rezeptGeburt" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="rezeptTelefon">Telefonnummer</label>
-                            <input type="tel" id="rezeptTelefon" placeholder="+49 ..." required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="rezeptMedikament">Gewünschte(s) Medikament(e)</label>
-                        <textarea id="rezeptMedikament" rows="3" placeholder="Bitte geben Sie die gewünschten Medikamente an…" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="rezeptAnmerkung">Anmerkungen (optional)</label>
-                        <textarea id="rezeptAnmerkung" rows="2" placeholder="Weitere Hinweise…"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                        Rezept anfordern
-                    </button>
-                </form>
-                <div class="form-success" id="rezeptSuccess">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    <h3>Anfrage gesendet!</h3>
-                    <p>Wir melden uns schnellstmöglich bei Ihnen.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Terminabsage Section -->
-    <section class="section" id="terminabsage">
-        <div class="container container-sm">
-            <div class="form-section animate-on-scroll">
-                <div class="form-header">
-                    <div class="form-icon icon-orange">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-                    </div>
-                    <h2 class="section-title">Terminabsage</h2>
-                    <p class="section-desc">Sie können Ihren Termin nicht wahrnehmen? Bitte sagen Sie rechtzeitig ab.</p>
-                </div>
-                <form class="modern-form" id="absageForm" onsubmit="submitAbsage(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="absageVorname">Vorname</label>
-                            <input type="text" id="absageVorname" placeholder="Ihr Vorname" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="absageNachname">Nachname</label>
-                            <input type="text" id="absageNachname" placeholder="Ihr Nachname" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="absageGeburt">Geburtsdatum</label>
-                            <input type="date" id="absageGeburt" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="absageTermin">Termin (Datum)</label>
-                            <input type="date" id="absageTermin" required>
+                    <div class="doctor-memberships-wrap">
+                        <button class="btn btn-glass" id="toggleMemberships" onclick="toggleMemberships()">
+                            Mitgliedschaften anzeigen
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+
+                        <div class="memberships-list" id="membershipsList">
+                            <h4 class="memberships-title">Mitgliedschaften & Fachgesellschaften</h4>
+                            <ul class="memberships">
+                                <li>European Academy of Dermatology and Venerology (EADV)</li>
+                                <li>Arbeitsgemeinschaft Dermatologische Onkologie (ADO)</li>
+                                <li>Deutsche Dermatologische Gesellschaft</li>
+                                <li>European Academy of Allergy and Clinical Immunology (EAACI)</li>
+                                <li>Arbeitsgemeinschaft Dermatologische Histologie</li>
+                                <li>Internationales Darmstädter Live-Symposium</li>
+                                <li>Deutsche Allergie-Kongress (DAK)</li>
+                                <li>International Society of Dermatopathology</li>
+                                <li>Drug Hypersensitivity Meeting (DHM)</li>
+                                <li>Deutsche Gesellschaft für Dermatochirurgie</li>
+                                <li>Deutsche STI-Gesellschaft</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="absageGrund">Grund der Absage (optional)</label>
-                        <textarea id="absageGrund" rows="2" placeholder="Bitte nennen Sie uns den Grund…"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full btn-orange">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                        Termin absagen
-                    </button>
-                </form>
-                <div class="form-success" id="absageSuccess">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    <h3>Absage gesendet!</h3>
-                    <p>Vielen Dank, wir haben Ihre Absage erhalten.</p>
                 </div>
             </div>
         </div>
@@ -534,49 +674,87 @@
     <section class="section section-dark" id="anfahrt">
         <div class="container">
             <div class="section-header animate-on-scroll">
-                <p class="section-eyebrow">So finden Sie uns</p>
-                <h2 class="section-title">Anfahrt zur Praxis.<br><span class="text-gradient">Zentral gelegen.</span></h2>
+                <p class="section-eyebrow" data-i18n="anfahrt_eyebrow">So finden Sie uns</p>
+                <h2 class="section-title" data-i18n="anfahrt_title">Anfahrt zur Praxis.<br><span class="text-gradient">Zentral gelegen.</span></h2>
             </div>
             <div class="anfahrt-layout">
                 <div class="anfahrt-info animate-on-scroll">
                     <div class="anfahrt-card">
                         <div class="anfahrt-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div>
-                            <h3>Adresse</h3>
-                            <p>Schlossplatz 1<br>91054 Erlangen</p>
+                            <h3 data-i18n="anfahrt_addr_title">Adresse</h3>
+                            <p data-i18n="anfahrt_addr_desc"><strong>Schlossplatz 1, 91054 Erlangen</strong><br><span class="anfahrt-subtext">1. Obergeschoss · Zentral am Erlanger Schlossplatz</span></p>
                         </div>
                     </div>
                     <div class="anfahrt-card">
                         <div class="anfahrt-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16M12 3v8M8 15h.01M16 15h.01M6 19l-2 2M18 19l2 2"/></svg>
                         </div>
                         <div>
-                            <h3>Verkehrsanbindung</h3>
-                            <p>Die Praxis liegt zentral am Schlossplatz. Mit öffentlichen Verkehrsmitteln über den Bahnhof oder Hugenottenplatz – nur 2 Minuten Fußweg. Parken am Bahnhof-Großparkplatz.</p>
+                            <h3 data-i18n="anfahrt_transit_title">Öffentliche Verkehrsmittel</h3>
+                            <div data-i18n="anfahrt_transit_desc">
+                                <ul class="anfahrt-list">
+                                    <li><strong>Bahnhof Erlangen:</strong> ca. 3 Gehminuten</li>
+                                    <li><strong>Hugenottenplatz:</strong> ca. 2 Gehminuten</li>
+                                </ul>
+                                <span class="anfahrt-subtext">Direkte Anbindung an alle Bahn- &amp; Buslinien.</span>
+                            </div>
                         </div>
                     </div>
                     <div class="anfahrt-card">
                         <div class="anfahrt-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9C2.1 11.1 2 11.6 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
                         </div>
                         <div>
-                            <h3>Eingänge</h3>
-                            <p><strong>Haupteingang:</strong> Am Schlossplatz (ausgeschildert).<br><strong>Barrierefreier Zugang:</strong> Rückseite des Gebäudes (Halbmondstraße) mit Aufzug – bitte klingeln.</p>
+                            <h3 data-i18n="anfahrt_car_title">Auto &amp; Parken</h3>
+                            <div data-i18n="anfahrt_car_desc">
+                                <ul class="anfahrt-list">
+                                    <li><strong>Großparkplatz am Bahnhof:</strong> wenige Gehminuten</li>
+                                </ul>
+                                <span class="anfahrt-subtext">Weitere Parkhäuser: Fuchsenwiese &amp; Erlangen Arcaden.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="anfahrt-card">
+                        <div class="anfahrt-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M3 21h18"/><circle cx="10" cy="12" r="1.2" fill="currentColor"/></svg>
+                        </div>
+                        <div>
+                            <h3 data-i18n="anfahrt_entry_title">Eingänge &amp; Barrierefreiheit</h3>
+                            <div data-i18n="anfahrt_entry_desc">
+                                <ul class="anfahrt-list">
+                                    <li><strong>Haupteingang:</strong> Schlossplatz 1</li>
+                                    <li><strong>Barrierefrei (Aufzug):</strong> Halbmondstraße (Rückseite)</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="anfahrt-map animate-on-scroll">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.5!2d11.0035!3d49.5966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a1f8c5c6d2c8d7%3A0x7c2c5b0e05f9b0c0!2sSchlossplatz%201%2C%2091054%20Erlangen!5e0!3m2!1sde!2sde!4v1"
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        title="Standort der Praxis">
-                    </iframe>
+                <div class="anfahrt-map animate-on-scroll" id="mapContainer">
+                    <div class="map-consent-placeholder" id="mapPlaceholder">
+                        <div class="map-consent-card">
+                            <div class="map-consent-icon">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <h3 data-i18n="anfahrt_map_title">Interaktive Karte von Google Maps</h3>
+                            <p data-i18n="anfahrt_map_desc">Zum Schutz Ihrer Privatsphäre wird die interaktive Karte erst geladen, wenn Sie zustimmen. Dabei können Daten an Google übertragen werden.</p>
+                            <div class="map-consent-actions">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="loadGoogleMaps()">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    <span data-i18n="anfahrt_map_btn">Karte laden & anzeigen</span>
+                                </button>
+                                <a href="https://maps.google.com/?q=Schlossplatz+1,+91054+Erlangen" target="_blank" rel="noopener noreferrer" class="btn btn-glass btn-sm">
+                                    <span data-i18n="anfahrt_map_gmaps">In Google Maps öffnen</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
+                            <span class="map-consent-privacy">
+                                Weitere Informationen in unserer <a href="#datenschutz" onclick="showDatenschutz(event)">Datenschutzerklärung</a>.
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -648,7 +826,7 @@
                 <div class="footer-links">
                     <h4>Rechtliches</h4>
                     <a href="#impressum" onclick="showImpressum(event)">Impressum</a>
-                    <a href="#datenschutz">Datenschutz</a>
+                    <a href="#datenschutz" onclick="showDatenschutz(event)">Datenschutz</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -656,6 +834,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Mobile Floating Action Bar (am Smartphone unten fixiert) -->
+    <nav class="mobile-action-bar" id="mobileActionBar" aria-label="Schnellaktionen">
+        <a href="tel:+49913124424" class="mobile-action-btn btn-call">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>09131 / 24424</span>
+        </a>
+        <a href="https://www.doctolib.de/einzelpraxis/erlangen/hautarztpraxis-dr-shahab-rahemi-pour-erlangen/booking" target="_blank" class="mobile-action-btn btn-book">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Termin buchen</span>
+        </a>
+    </nav>
 
     <!-- Impressum Modal -->
     <div class="modal-overlay" id="impressumModal">
@@ -669,16 +859,139 @@
                 <p>Dr. med. Rahemi Pour<br>Schlossplatz 1<br>91054 Erlangen</p>
                 <p><strong>Unternehmensgegenstand:</strong> Arzt für Dermatologie, Allergologie, Proktologie, Venerologie, Dermatochirurgie, Dermatohistopathologie, Berufsdermatologie, Ästhetische Medizin und Genodermatologie</p>
                 <p><strong>Telefon:</strong> +49 9131 24424</p>
-                
-                <h3>Zuständige Aufsichtsbehörde</h3>
-                <p>Kassenärztliche Vereinigung Bayern<br>Bezirksstelle Mittelfranken<br>Vogelsgarten 6<br>90402 Nürnberg</p>
+                <p><strong>Telefax:</strong> +49 9131 898883</p>
 
-                <h3>Zuständige Ärztekammer</h3>
-                <p>Bayerische Landesärztekammer<br>Mühlbaurstraße 16<br>81677 München</p>
+                <h3>Berufsrechtliche Angaben</h3>
+                <p><strong>Gesetzliche Berufsbezeichnung:</strong> Arzt (verliehen in der Bundesrepublik Deutschland)</p>
+                <p><strong>Zuständige Ärztekammer:</strong><br>Bayerische Landesärztekammer (BLÄK)<br>Mühlbaurstraße 16, 81677 München<br><a href="https://www.blaek.de" target="_blank" rel="noopener">www.blaek.de</a></p>
+                <p><strong>Zuständige Aufsichtsbehörde (kassenärztlich):</strong><br>Kassenärztliche Vereinigung Bayerns (KVB)<br>Bezirksstelle Mittelfranken, Vogelsgarten 6, 90402 Nürnberg<br><a href="https://www.kvb.de" target="_blank" rel="noopener">www.kvb.de</a></p>
+                <p><strong>Berufsrechtliche Regelungen:</strong><br>Berufsordnung für die Ärzte Bayerns sowie das Bayerische Heilberufe-Kammergesetz (HKaG), einsehbar auf der Website der BLÄK unter <a href="https://www.blaek.de" target="_blank" rel="noopener">www.blaek.de</a>.</p>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Datenschutz Modal -->
+    <div class="modal-overlay" id="datenschutzModal">
+        <div class="modal-content modal-datenschutz-content">
+            <button class="modal-close" onclick="closeDatenschutz()" aria-label="Schließen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h2>Datenschutzerklärung</h2>
+            <div class="datenschutz-content">
+                <div class="datenschutz-section">
+                    <h3>1. Verantwortliche Stelle</h3>
+                    <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze ist:</p>
+                    <div class="datenschutz-box">
+                        <strong>Hautarztpraxis Dr. med. Rahemi Pour</strong><br>
+                        Schlossplatz 1<br>
+                        91054 Erlangen<br>
+                        Telefon: 09131 / 24424<br>
+                        Telefax: 09131 / 898883
+                    </div>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>2. Allgemeine Datenerfassung auf unserer Website</h3>
+                    <p>Beim Aufrufen unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sogenannten Logfile gespeichert:</p>
+                    <ul>
+                        <li>IP-Adresse des anfragenden Rechners (anonymisiert)</li>
+                        <li>Datum und Uhrzeit des Zugriffs</li>
+                        <li>Name und URL der abgerufenen Datei</li>
+                        <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+                        <li>Verwendeter Browser und Betriebssystem Ihres Endgeräts</li>
+                    </ul>
+                    <p>Rechtsgrundlage ist Art. 6 Abs. 1 S. 1 lit. f DSGVO zur Gewährleistung von Stabilität und Betriebssicherheit.</p>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>3. Verarbeitung von Gesundheitsdaten bei Rezeptbestellungen (Art. 9 DSGVO)</h3>
+                    <p>Über unsere Website können bestehende Patienten Folgerezepte anfordern. Hierbei verarbeiten wir personenbezogene Daten sowie <strong>besondere Kategorien personenbezogener Daten (Gesundheitsdaten gemäß Art. 9 Abs. 1 DSGVO)</strong>:</p>
+                    <ul>
+                        <li>Vor- und Nachname</li>
+                        <li>Geburtsdatum</li>
+                        <li>Telefonnummer für eventuelle medizinische Rückfragen</li>
+                        <li>Gewünschte(s) Medikament(e) und ggf. medizinische Anmerkungen</li>
+                    </ul>
+                    <p><strong>Rechtsgrundlage:</strong> Die Verarbeitung erfolgt auf Grundlage Ihrer ausdrücklichen Einwilligung gemäß <strong>Art. 9 Abs. 2 lit. a DSGVO i. V. m. Art. 6 Abs. 1 lit. a DSGVO</strong> sowie zur Durchführung von Maßnahmen des Behandlungsvertrags gemäß <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> und § 630a BGB.</p>
+                    <p>Alle Angaben werden streng vertraulich behandelt und unterliegen der <strong>ärztlichen Schweigepflicht nach § 203 StGB</strong>.</p>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>4. Online-Terminabsage</h3>
+                    <p>Bei der Online-Terminabsage verarbeiten wir Ihre Angaben (Name, Geburtsdatum, Termindatum und optional den Absagegrund) auf Grundlage von Art. 6 Abs. 1 lit. b & lit. f DSGVO zur ordnungsgemäßen Praxiskoordination.</p>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>5. Externe Dienste & Verlinkungen</h3>
+                    <h4>Doctolib (Online-Terminvereinbarung)</h4>
+                    <p>Für die Terminbuchung verlinken wir auf das Angebot der Doctolib GmbH (Mehringdamm 51, 10961 Berlin). Bei Betätigung des Buchungslinks verlassen Sie unsere Website. Die Datenverarbeitung erfolgt auf den Servern von Doctolib gemäß deren Datenschutzbestimmungen.</p>
+
+                    <h4>Google Maps (2-Klick-Lösung)</h4>
+                    <p>Wir nutzen Google Maps mit einer datenschutzfreundlichen <strong>2-Klick-Lösung</strong>. Solange Sie die interaktive Karte nicht aktiv laden, findet keine Datenübertragung an Google statt. Erst wenn Sie auf „Karte laden & anzeigen“ klicken, willigen Sie gemäß Art. 6 Abs. 1 lit. a DSGVO ein, dass eine direkte Verbindung zu Google Ireland Limited hergestellt und Ihre IP-Adresse übertragen wird.</p>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>6. Speicherdauer und Aufbewahrungspflichten</h3>
+                    <p>Ihre Daten werden gelöscht, sobald der Zweck ihrer Erhebung entfällt. Medizinische Dokumentationsdaten unterliegen den gesetzlichen Aufbewahrungsfristen (insbesondere § 630f Abs. 3 BGB: mindestens 10 Jahre nach Behandlungsabschluss).</p>
+                </div>
+
+                <div class="datenschutz-section">
+                    <h3>7. Ihre Rechte als betroffene Person</h3>
+                    <p>Sie haben jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie das Recht auf Widerruf einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO).</p>
+                    <p>Zuständige Aufsichtsbehörde für Beschwerden: <strong>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</strong>, Promenade 18, 91522 Ansbach.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Urlaub & Vertretungen Modal -->
+    <div class="modal-overlay" id="urlaubModal">
+        <div class="modal-content modal-urlaub-content">
+            <button class="modal-close" onclick="closeUrlaubModal()" aria-label="Schließen">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="modal-urlaub-header">
+                <div class="modal-urlaub-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Praxis vorübergehend geschlossen
+                </div>
+                <h2 class="modal-urlaub-title">Praxisurlaub & Vertretung</h2>
+                <p class="modal-urlaub-period" id="modalUrlaubPeriod">Geschlossen vom 15.09. bis 30.09.2026</p>
+                <div class="modal-urlaub-return-card">
+                    <span class="return-label">Reguläre Sprechstunde wieder ab:</span>
+                    <strong class="return-date" id="modalUrlaubReturn">Donnerstag, 01. Oktober 2026</strong>
+                </div>
+            </div>
+
+            <div class="modal-urlaub-body">
+                <div class="vertretungen-heading-wrap">
+                    <h3 class="vertretungen-heading">Ärztliche Vertretungspraxen</h3>
+                    <p class="vertretungen-subheading">In dringenden medizinischen Fällen während unserer Schließzeit wenden Sie sich bitte an:</p>
+                </div>
+                
+                <div class="vertretungen-list" id="modalVertretungenList">
+                    <!-- Dynamisch befüllt aus urlaub-config.js -->
+                </div>
+
+                <!-- Notdienst / KVB Bereitschaftsdienst -->
+                <div class="notdienst-card">
+                    <div class="notdienst-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="notdienst-info">
+                        <h4 id="modalNotdienstTitle">Ärztlicher Bereitschaftsdienst</h4>
+                        <p id="modalNotdienstText">Außerhalb der Praxisöffnungszeiten, nachts und am Wochenende bundesweit erreichbar.</p>
+                    </div>
+                    <a href="tel:116117" class="notdienst-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span id="modalNotdienstBtnText">116 117</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="urlaub-config.js?v=2.0"></script>
+    <script src="script.js?v=6.0"></script>
 </body>
 </html>
