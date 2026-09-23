@@ -39,8 +39,8 @@ function initScrollObserver() {
                 }
             });
         }, {
-            threshold: 0.06,
-            rootMargin: '0px 0px -30px 0px'
+            threshold: 0.05,
+            rootMargin: '0px'
         });
 
         elements.forEach(el => {
@@ -361,36 +361,46 @@ function updateLiveHoursStatus() {
     const day = now.getDay(); // 0 = So, 1 = Mo, 2 = Di, 3 = Mi, 4 = Do, 5 = Fr, 6 = Sa
     const minutesNow = now.getHours() * 60 + now.getMinutes();
 
-    const MORNING_OPEN = 8 * 60; // 08:00 Uhr
-    const MORNING_CLOSE = 12 * 60; // 12:00 Uhr
-    const AFTERNOON_OPEN = 14 * 60 + 30; // 14:30 Uhr
-    const AFTERNOON_CLOSE = 17 * 60 + 30; // 17:30 Uhr
+    const MORNING_OPEN = 8 * 60; // 08:00
+    const CONTINUOUS_CLOSE = 14 * 60; // 14:00 (Mo, Mi, Fr)
+    const SPLIT_MORNING_CLOSE = 12 * 60 + 30; // 12:30 (Di, Do)
+    const SPLIT_AFTERNOON_OPEN = 14 * 60 + 30; // 14:30 (Di, Do)
+    const SPLIT_AFTERNOON_CLOSE = 18 * 60; // 18:00 (Di, Do)
 
     let isOpen = false;
     let statusMessage = '';
 
-    if (day >= 1 && day <= 5) { // Montag bis Freitag
-        const hasAfternoon = (day === 1 || day === 2 || day === 4); // Mo, Di, Do
-
-        if (minutesNow >= MORNING_OPEN && minutesNow < MORNING_CLOSE) {
+    if (day === 1 || day === 3 || day === 5) { // Mo, Mi, Fr
+        if (minutesNow >= MORNING_OPEN && minutesNow < CONTINUOUS_CLOSE) {
             isOpen = true;
-            statusMessage = isEn ? 'Open now (until 12:00 PM)' : 'Jetzt geöffnet (bis 12:00 Uhr)';
-        } else if (hasAfternoon && minutesNow >= MORNING_CLOSE && minutesNow < AFTERNOON_OPEN) {
-            isOpen = false;
-            statusMessage = isEn ? 'Lunch break (opens 2:30 PM)' : 'Mittagspause (öffnet 14:30 Uhr)';
-        } else if (hasAfternoon && minutesNow >= AFTERNOON_OPEN && minutesNow < AFTERNOON_CLOSE) {
-            isOpen = true;
-            statusMessage = isEn ? 'Open now (until 5:30 PM)' : 'Jetzt geöffnet (bis 17:30 Uhr)';
+            statusMessage = isEn ? 'Open now (until 2:00 PM)' : 'Jetzt geöffnet (bis 14:00 Uhr)';
         } else if (minutesNow < MORNING_OPEN) {
             isOpen = false;
             statusMessage = isEn ? 'Currently closed (opens today 8:00 AM)' : 'Aktuell geschlossen (öffnet heute 08:00 Uhr)';
         } else {
             isOpen = false;
-            if (day === 5) {
+            if (day === 5) { // Freitag nach 14:00 Uhr
                 statusMessage = isEn ? 'Closed (opens Mon. 8:00 AM)' : 'Geschlossen (öffnet Mo. 08:00 Uhr)';
             } else {
                 statusMessage = isEn ? 'Closed (opens tomorrow 8:00 AM)' : 'Geschlossen (öffnet morgen 08:00 Uhr)';
             }
+        }
+    } else if (day === 2 || day === 4) { // Di, Do
+        if (minutesNow >= MORNING_OPEN && minutesNow < SPLIT_MORNING_CLOSE) {
+            isOpen = true;
+            statusMessage = isEn ? 'Open now (until 12:30 PM)' : 'Jetzt geöffnet (bis 12:30 Uhr)';
+        } else if (minutesNow >= SPLIT_MORNING_CLOSE && minutesNow < SPLIT_AFTERNOON_OPEN) {
+            isOpen = false;
+            statusMessage = isEn ? 'Lunch break (opens 2:30 PM)' : 'Mittagspause (öffnet 14:30 Uhr)';
+        } else if (minutesNow >= SPLIT_AFTERNOON_OPEN && minutesNow < SPLIT_AFTERNOON_CLOSE) {
+            isOpen = true;
+            statusMessage = isEn ? 'Open now (until 6:00 PM)' : 'Jetzt geöffnet (bis 18:00 Uhr)';
+        } else if (minutesNow < MORNING_OPEN) {
+            isOpen = false;
+            statusMessage = isEn ? 'Currently closed (opens today 8:00 AM)' : 'Aktuell geschlossen (öffnet heute 08:00 Uhr)';
+        } else {
+            isOpen = false;
+            statusMessage = isEn ? 'Closed (opens tomorrow 8:00 AM)' : 'Geschlossen (öffnet morgen 08:00 Uhr)';
         }
     } else {
         // Wochenende
@@ -505,7 +515,9 @@ function initUrlaub() {
         if (rezeptForm) rezeptForm.style.display = '';
         if (rezeptNotice) rezeptNotice.style.display = 'none';
         if (rezeptSectionDesc) {
-            rezeptSectionDesc.textContent = 'Nur für bestehende Patienten. Bitte füllen Sie das Formular vollständig aus.';
+            rezeptSectionDesc.textContent = (typeof currentLang !== 'undefined' && currentLang === 'en')
+                ? (translations.en ? translations.en.rezept_desc : 'For existing patients whose insurance card has already been read in the current quarter.')
+                : (translations.de ? translations.de.rezept_desc : 'Für bestehende Patienten, deren Versichertenkarte im aktuellen Quartal bereits eingelesen wurde.');
         }
         console.log('[Urlaubs-Init] Praxisurlaub ist aktuell INAKTIV. Normaler Praxisbetrieb angezeigt.');
         return;
@@ -752,7 +764,7 @@ const translations = {
 
         // Öffnungszeiten
         hours_title: "Unsere Öffnungszeiten",
-        hours_note: "Termine nach Vereinbarung · Notfälle jederzeit",
+        hours_note: "Termine nach Vereinbarung · akute Notfälle jederzeit",
         day_mon: "Montag",
         day_tue: "Dienstag",
         day_wed: "Mittwoch",
@@ -851,7 +863,7 @@ const translations = {
 
         // Öffnungszeiten
         hours_title: "Our Opening Hours",
-        hours_note: "Appointments by arrangement · Emergencies welcome",
+        hours_note: "Appointments by arrangement · Acute emergencies anytime",
         day_mon: "Monday",
         day_tue: "Tuesday",
         day_wed: "Wednesday",

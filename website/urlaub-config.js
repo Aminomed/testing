@@ -19,25 +19,18 @@ const urlaubConfig = {
     status: 'auto', // Zum ersten Testen auf 'an' gesetzt, damit Sie das Ergebnis sofort sehen
 
     // Urlaubszeitraum (Format: JJJJ-MM-TT)
-    von: "2026-09-25",
-    bis: "2026-09-30",
+    von: "2026-10-01",
+    bis: "2026-10-02",
 
     // Wann die Praxis wieder regulär erreichbar ist
-    wiederDaAb: "Donnerstag, den 01. Oktober 2026",
+    wiederDaAb: "Freitag, den 02. Oktober 2026",
 
     // Kurzer Text für den Announcement-Banner oben
-    bannerText: "Praxisurlaub vom 15.09. bis 30.09.2026",
+    bannerText: "Praxis geschlossen wegen Kongress",
 
     // Vertretungspraxen während der Schließzeit
     vertretungen: [
-        {
-            name: "Dr. med. Maria Musterfrau",
-            fach: "Fachärztin für Dermatologie & Allergologie",
-            adresse: "Hauptstraße 15, 91054 Erlangen",
-            telefon: "09131 123456",
-            telefonLink: "+499131123456",
-            hinweis: "Bitte vorab telefonisch anmelden"
-        },
+        
         {
             name: "Dermatologisches Zentrum Erlangen",
             fach: "Gemeinschaftspraxis für Hauterkrankungen",

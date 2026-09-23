@@ -41,21 +41,21 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Thursday"],
+          "dayOfWeek": ["Monday", "Wednesday", "Friday"],
           "opens": "08:00",
-          "closes": "12:00"
+          "closes": "14:00"
         },
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Thursday"],
+          "dayOfWeek": ["Tuesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "12:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Thursday"],
           "opens": "14:30",
-          "closes": "17:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Wednesday", "Friday"],
-          "opens": "08:00",
-          "closes": "12:00"
+          "closes": "18:00"
         }
       ]
     }
@@ -63,7 +63,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=11.0">
+    <link rel="stylesheet" href="style.css?v=15.0">
 </head>
 <body>
     <!-- Announcement Banner (Praxisurlaub & Vertretung) -->
@@ -157,8 +157,9 @@
                 </a>
             </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <div class="scroll-line"></div>
+        <div class="hero-scroll-indicator" onclick="document.getElementById('schnellauswahl').scrollIntoView({behavior:'smooth'})">
+            <span class="scroll-text">Nach unten scrollen</span>
+            <svg class="scroll-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
     </section>
 
@@ -228,26 +229,26 @@
                     <div class="hours-grid">
                         <div class="hours-item">
                             <span class="hours-day" data-i18n="day_mon">Montag</span>
-                            <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
+                            <span class="hours-time">08:00 - 14:00</span>
                         </div>
                         <div class="hours-item">
                             <span class="hours-day" data-i18n="day_tue">Dienstag</span>
-                            <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
+                            <span class="hours-time">08:00 - 12:30 &nbsp;|&nbsp; 14:30 - 18:00</span>
                         </div>
                         <div class="hours-item">
                             <span class="hours-day" data-i18n="day_wed">Mittwoch</span>
-                            <span class="hours-time">08:00 – 12:00</span>
+                            <span class="hours-time">08:00 - 14:00</span>
                         </div>
                         <div class="hours-item">
                             <span class="hours-day" data-i18n="day_thu">Donnerstag</span>
-                            <span class="hours-time">08:00 – 12:00 &nbsp;|&nbsp; 14:30 – 17:30</span>
+                            <span class="hours-time">08:00 - 12:30 &nbsp;|&nbsp; 14:30 - 18:00</span>
                         </div>
                         <div class="hours-item">
                             <span class="hours-day" data-i18n="day_fri">Freitag</span>
-                            <span class="hours-time">08:00 – 12:00</span>
+                            <span class="hours-time">08:00 - 14:00</span>
                         </div>
                     </div>
-                    <p class="hours-note" data-i18n="hours_note">Termine nach Vereinbarung · Notfälle jederzeit</p>
+                    <p class="hours-note" data-i18n="hours_note">Termine nach Vereinbarung · akute Notfälle jederzeit</p>
                 </div>
             </div>
         </div>
@@ -991,7 +992,10 @@
         </div>
     </div>
 
-    <script src="urlaub-config.js?v=8.0"></script>
-    <script src="script.js?v=10.0"></script>
+    <!-- Urlaubs-Konfiguration immer live laden (kein Browser-Cache) -->
+    <script>
+        document.write('<script src="urlaub-config.js?t=' + Date.now() + '"><\/script>');
+    </script>
+    <script src="script.js?v=17.0"></script>
 </body>
 </html>

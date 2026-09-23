@@ -1,0 +1,13 @@
+{
+    "status": "auto",
+    "von": "2026-10-01",
+    "bis": "2026-10-02",
+    "wiederDaAb": "2. Oktober",
+    "bannerText": "Dermatologisches Kongress",
+    "vertretungen": [],
+    "notdienst": {
+        "titel": "Ärztlicher Bereitschaftsdienst",
+        "telefon": "116 117",
+        "hinweis": "Außerhalb unserer Sprechzeiten wenden Sie sich bitte an den ärztlichen Bereitschaftsdienst unter der bundesweit einheitlichen Rufnummer 116 117."
+    }
+}
